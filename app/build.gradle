@@ -9,9 +9,12 @@ version '1.0-SNAPSHOT'
 repositories {
     mavenCentral()
 }
+dependencies {
+    implementation 'info.picocli:picocli:4.7.3'
+}
 
 application {
-    mainClass = 'hexlet.code.Main'
+    mainClass = 'hexlet.code.App'
 }
 
 compileJava {
