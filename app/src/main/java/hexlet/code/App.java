@@ -1,7 +1,15 @@
 package hexlet.code;
+import picocli.CommandLine;
+import picocli.CommandLine.Command;
 
-public class Main {
+import java.util.concurrent.Callable;
+
+
+public class App {
+
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        new CommandLine(new Differ()).execute(args);
     }
+
+
 }
