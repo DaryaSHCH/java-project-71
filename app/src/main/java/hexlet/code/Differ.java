@@ -1,41 +1,46 @@
 package hexlet.code;
 
-import picocli.CommandLine;
-import picocli.CommandLine.Command;
-import picocli.CommandLine.Option;
-import picocli.CommandLine.Parameters;
-
 import java.io.File;
-import java.util.concurrent.Callable;
+import java.io.IOException;
+import java.util.*;
 
-@Command(
-        name = "gendiff",
-        version = "gendiff 0.1",
-        mixinStandardHelpOptions = true,
-        description = "Compares two configuration files and shows a difference.")
-public class Differ implements Callable<String> {
 
-    @Parameters(index = "0", paramLabel = "filepath1", description = "path to first file")
-    private File left;
+public class Differ {
 
-    @Parameters(index = "1", paramLabel = "filepath2", description = "path to second file")
-    private File right;
+    public static String generate(File file1, File file2, String outputFormat) throws IOException {
+        StringBuilder diff = new StringBuilder("{\n");
+        Map<String, Object> leftData = Parser.parseJson(file1);
+        Map<String, Object> rightData = Parser.parseJson(file2);
 
-    @Option(names = {"-f", "--format"},
-            paramLabel = "format",
-            description = "output format [default: stylish]")
-    private String outputFormat;
+        Set<String> allKeys = new HashSet<>();
+        allKeys.addAll(leftData.keySet());
+        allKeys.addAll(rightData.keySet());
 
-    public static String generate(File filePath1, File filePath2){
-        String differences = "";
+        List<String> sortedKeys = new ArrayList<>(allKeys);
+        Collections.sort(sortedKeys);
 
-        return differences;
+        for (String key : sortedKeys) {
+            final Object l = leftData.get(key);
+            final Object r = rightData.get(key);
+
+            if (l == null) {
+                diff.append("+ " + key + ": " + r + "\n");
+            } else {
+                if (r == null) {
+                    diff.append("- " + key + ": " + l + "\n");
+                } else if (l.equals(r)) {
+                    diff.append("  " + key + ": " + l + "\n");
+                } else {
+                    diff.append("- " + key + ": " + l + "\n");
+                    diff.append("+ " + key + ": " + r + "\n");
+                }
+            }
+        }
+
+        diff.append("}");
+        String result = diff.toString();
+
+        return result;
     }
 
-    @Override
-    public String call() throws Exception {
-        generate(left, right);
-
-        return "to be implemented";
-    }
 }
