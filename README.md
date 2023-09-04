@@ -4,3 +4,8 @@
 ###
 Step 5, example of programm working
 https://drive.google.com/file/d/1EHS7MbRdGesiwi_jrTES9HR8KZ0MmHhX/view?usp=sharing
+
+### 
+Maintainability:
+
+<a href="https://codeclimate.com/github/DaryaSHCH/java-project-71/maintainability"><img src="https://api.codeclimate.com/v1/badges/fd0275bc7227caa79e7e/maintainability" /></a>
