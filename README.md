@@ -1,3 +1,7 @@
+ПРОЕКТ "Вычислитель отличий"
+Описание:
+Консольная утилита, определяющая разницу между двумя структурами данных.
+
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/DaryaSHCH/java-project-71/workflows/hexlet-check/badge.svg)](https://github.com/DaryaSHCH/java-project-71/actions)
 
