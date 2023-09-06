@@ -1,0 +1,57 @@
+package hexlet.code;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
+import org.junit.platform.commons.util.ClassLoaderUtils;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Map;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class ParserTest {
+
+    @Test
+    void shouldReturnExpectedData() throws IOException {
+        final File file = getFile("parser_input.json");
+
+        final Map<String, Object> actual = Parser.parseJson(file);
+        final Map<String, Object> expected = Map.of(
+                "key_string", "value",
+                "key_boolean", true,
+                "key_integer", 1,
+                "key_double", 1.2d
+        );
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void shouldReturnEmptyMap() throws IOException {
+        final File file = getFile("parser_input_empty.json");
+        final Map<String, Object> actual = Parser.parseJson(file);
+        final Map<String, Object> expected = Map.of();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void shouldThrowExceptionOnCorruptedJson() {
+        final File file = getFile("parser_input_corrupted.json");
+
+        assertThrows(
+                IOException.class,
+                () -> Parser.parseJson(file));
+    }
+
+    private static File getFile(String name) {
+        final String testFilePath = ClassLoaderUtils.getDefaultClassLoader()
+                .getResource(name)
+                .getFile();
+
+        return new File(testFilePath);
+    }
+
+}
