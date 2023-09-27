@@ -13,3 +13,5 @@ https://drive.google.com/file/d/1EHS7MbRdGesiwi_jrTES9HR8KZ0MmHhX/view?usp=shari
 Maintainability:
 
 <a href="https://codeclimate.com/github/DaryaSHCH/java-project-71/maintainability"><img src="https://api.codeclimate.com/v1/badges/fd0275bc7227caa79e7e/maintainability" /></a>
+
+<a href="https://codeclimate.com/github/DaryaSHCH/java-project-71/test_coverage"><img src="https://api.codeclimate.com/v1/badges/fd0275bc7227caa79e7e/test_coverage" /></a>
