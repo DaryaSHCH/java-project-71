@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 
+import static hexlet.code.TestUtils.getFile;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ParserTest {
@@ -17,7 +18,7 @@ class ParserTest {
     void shouldReturnExpectedData() throws IOException {
         final File file = getFile("parser_input.json");
 
-        final Map<String, Object> actual = Parser.parseJson(file);
+        final Map<String, Object> actual = Parser.parse(file);
         final Map<String, Object> expected = Map.of(
                 "key_string", "value",
                 "key_boolean", true,
@@ -31,7 +32,7 @@ class ParserTest {
     @Test
     void shouldReturnEmptyMap() throws IOException {
         final File file = getFile("parser_input_empty.json");
-        final Map<String, Object> actual = Parser.parseJson(file);
+        final Map<String, Object> actual = Parser.parse(file);
         final Map<String, Object> expected = Map.of();
 
         assertEquals(expected, actual);
@@ -43,15 +44,7 @@ class ParserTest {
 
         assertThrows(
                 IOException.class,
-                () -> Parser.parseJson(file));
-    }
-
-    private static File getFile(String name) {
-        final String testFilePath = ClassLoaderUtils.getDefaultClassLoader()
-                .getResource(name)
-                .getFile();
-
-        return new File(testFilePath);
+                () -> Parser.parse(file));
     }
 
 }

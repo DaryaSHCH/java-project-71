@@ -9,8 +9,8 @@ public class Differ {
 
     public static String generate(File file1, File file2, String outputFormat) throws IOException {
         StringBuilder diff = new StringBuilder("{\n");
-        Map<String, Object> leftData = Parser.parseJson(file1);
-        Map<String, Object> rightData = Parser.parseJson(file2);
+        Map<String, Object> leftData = Parser.parse(file1);
+        Map<String, Object> rightData = Parser.parse(file2);
 
         Set<String> allKeys = new HashSet<>();
         allKeys.addAll(leftData.keySet());
