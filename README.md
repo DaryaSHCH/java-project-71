@@ -11,6 +11,10 @@
 Step 5, example of programm working
 https://drive.google.com/file/d/1EHS7MbRdGesiwi_jrTES9HR8KZ0MmHhX/view?usp=sharing
 
+###
+Step 7
+asciinema https://asciinema.org/a/Qp97f41uLTjuDgUY0kGuiONXz
+
 ### 
 Maintainability:
 
