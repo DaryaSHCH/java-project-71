@@ -5,8 +5,6 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/DaryaSHCH/java-project-71/workflows/hexlet-check/badge.svg)](https://github.com/DaryaSHCH/java-project-71/actions)
 
-[![Test Coverage](https://api.codeclimate.com/v1/badges/fd0275bc7227caa79e7e/test_coverage)](https://codeclimate.com/github/DaryaSHCH/java-project-71/test_coverage)
-
 ###
 Step 5, example of programm working
 https://drive.google.com/file/d/1EHS7MbRdGesiwi_jrTES9HR8KZ0MmHhX/view?usp=sharing
