@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'application'
     id 'jacoco'
+    id 'com.adarshr.test-logger' version '3.0.0'
 }
 
 group 'hexlet.code'
@@ -36,6 +37,6 @@ test {
 
 jacocoTestReport {
     reports {
-        xml.required.set(true)
+        xml.required = true
     }
 }
