@@ -19,6 +19,7 @@ jobs:
         with:
           java-version: '20'
           distribution: 'temurin'
+        - run: chmod +x app/gradlew
 
       - name: Build with Gradle
         uses: gradle/gradle-build-action@v2
@@ -26,6 +27,9 @@ jobs:
           arguments: build
           build-root-directory: app
 
+      - run: chmod +x app/gradlew
+      - run: make -C app run-dist
+      
       - name: Publish code coverage
         uses: paambaati/codeclimate-action@v3.1.0
         env:
