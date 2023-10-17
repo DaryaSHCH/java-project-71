@@ -40,6 +40,6 @@ jacoco {
 
 jacocoTestReport {
     reports {
-        xml.required.set(true)
+        xml.required = true
     }
 }
