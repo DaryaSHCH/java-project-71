@@ -1,4 +1,5 @@
 package hexlet.code;
+import hexlet.code.picocli.OutputFormatConverter;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 
@@ -22,8 +23,10 @@ public class App implements Callable<String>{
 
     @CommandLine.Option(names = {"-f", "--format"},
             paramLabel = "format",
+            defaultValue = "stylish",
+            converter = OutputFormatConverter.class,
             description = "output format [default: stylish]")
-    private String outputFormat;
+    private OutputFormat outputFormat;
 
     public static void main(String[] args) {
         final int exitCode = new CommandLine(new App()).execute(args);

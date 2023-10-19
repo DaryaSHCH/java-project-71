@@ -2,13 +2,14 @@ package hexlet.code;
 
 import java.io.File;
 import java.io.IOException;
+import java.security.Key;
 import java.util.*;
 
 
 public class Differ {
 
-    public static String generate(File file1, File file2, String outputFormat) throws IOException {
-        StringBuilder diff = new StringBuilder("{\n");
+    public static String generate(File file1, File file2, OutputFormat outputFormat) throws IOException {
+        StringBuilder diff = new StringBuilder(Formatter.getHeaderLine(outputFormat));
         Map<String, Object> leftData = Parser.parse(file1);
         Map<String, Object> rightData = Parser.parse(file2);
 
@@ -23,24 +24,32 @@ public class Differ {
             final Object l = leftData.get(key);
             final Object r = rightData.get(key);
 
+            final Formatter.EqualityCheckResult checkResult;
             if (l == null) {
-                diff.append("+ " + key + ": " + r + "\n");
+                checkResult = Formatter.EqualityCheckResult.ADDED;
             } else {
                 if (r == null) {
-                    diff.append("- " + key + ": " + l + "\n");
+                    checkResult = Formatter.EqualityCheckResult.REMOVED;
                 } else if (l.equals(r)) {
-                    diff.append("  " + key + ": " + l + "\n");
+                    checkResult = Formatter.EqualityCheckResult.EQUAL;
                 } else {
-                    diff.append("- " + key + ": " + l + "\n");
-                    diff.append("+ " + key + ": " + r + "\n");
+                    checkResult = Formatter.EqualityCheckResult.CHANGED;
                 }
             }
+
+            final String formattedStringToDisplay = Formatter.format(
+                    key,
+                    l, r,
+                    checkResult,
+                    outputFormat
+            );
+
+            diff.append(formattedStringToDisplay);
         }
 
-        diff.append("}");
-        String result = diff.toString();
+        diff.append(Formatter.getTrailingLine(outputFormat));
 
-        return result;
+        return diff.toString();
     }
 
 }
