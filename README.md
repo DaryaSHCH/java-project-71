@@ -19,6 +19,11 @@ Step 8
 asciinema https://asciinema.org/a/UgjwzLOL2Moc16kDVm5Eys2xk
 
 ### 
+Step 9 
+
+asciinema https://asciinema.org/a/fc54U86977N1oE83iADGv7XKf
+
+### 
 Maintainability:
 
 <a href="https://codeclimate.com/github/DaryaSHCH/java-project-71/maintainability"><img src="https://api.codeclimate.com/v1/badges/fd0275bc7227caa79e7e/maintainability" /></a>
