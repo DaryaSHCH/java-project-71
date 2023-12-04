@@ -1,5 +1,6 @@
 package hexlet.code.formatters;
 
+import hexlet.code.Differ;
 import hexlet.code.Formatter;
 import hexlet.code.OutputFormat;
 
@@ -11,8 +12,8 @@ public class Plain {
             final String key,
             final Object leftValue,
             final Object rightValue,
-            final Formatter.EqualityCheckResult checkResult,
-            final OutputFormat format) {
+            final Formatter.EqualityCheckResult checkResult) {
+
             final Object leftValuePrepared = getStringValueForPlainFormat(leftValue);
             final Object rightValuePrepared = getStringValueForPlainFormat(rightValue);
             final StringBuilder stringBuilder = new StringBuilder();
@@ -43,12 +44,33 @@ public class Plain {
             return o + "";
         }
     }
-    public static String getHeaderLine(final OutputFormat outputFormat) {
+
+    public static String getFormatted(
+            final List<Differ.KeyDifference> differences) {
+        final StringBuilder sb = new StringBuilder();
+
+        sb.append(getHeaderLine());
+
+        for (final Differ.KeyDifference difference : differences) {
+            final String stylishString = formatPlain(
+                    difference.getKey(),
+                    difference.getLeftValue(),
+                    difference.getRightValue(),
+                    difference.getDifference()
+            );
+
+            sb.append(stylishString);
+        }
+
+        sb.append(getTrailingLine());
+
+        return sb.toString();
+    }
+    public static String getHeaderLine() {
         return "";
 
     }
-
-    public static String getTrailingLine(final OutputFormat outputFormat) {
+    public static String getTrailingLine() {
         return  "";
     }
 }

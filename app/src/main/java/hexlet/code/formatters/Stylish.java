@@ -1,7 +1,10 @@
 package hexlet.code.formatters;
 
+import hexlet.code.Differ;
 import hexlet.code.Formatter;
 import hexlet.code.OutputFormat;
+
+import java.util.List;
 
 public class Stylish {
     public static String formatStylish(
@@ -24,13 +27,36 @@ public class Stylish {
         }
     return stringBuilder.toString();
     }
-    public static String getHeaderLine(final OutputFormat outputFormat) {
+
+    private static String getHeaderLine() {
         return "{\n";
     }
 
-    public static String getTrailingLine(final OutputFormat outputFormat) {
+    private static String getTrailingLine() {
         return  "}";
 
+    }
+
+    public static String getFormatted(
+            final List<Differ.KeyDifference> differences) {
+        final StringBuilder sb = new StringBuilder();
+
+        sb.append(getHeaderLine());
+
+        for (final Differ.KeyDifference difference : differences) {
+            final String stylishString = formatStylish(
+                    difference.getKey(),
+                    difference.getLeftValue(),
+                    difference.getRightValue(),
+                    difference.getDifference()
+            );
+
+            sb.append(stylishString);
+        }
+
+        sb.append(getTrailingLine());
+
+        return sb.toString();
     }
 }
 
