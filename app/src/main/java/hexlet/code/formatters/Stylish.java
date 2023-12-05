@@ -16,12 +16,12 @@ public class Stylish {
         final StringBuilder stringBuilder = new StringBuilder();
 
         switch (checkResult) {
-            case ADDED -> stringBuilder.append("+ " + key + ": " + rightValue + "\n");
-            case REMOVED -> stringBuilder.append("- " + key + ": " + leftValue + "\n");
-            case EQUAL -> stringBuilder.append("  " + key + ": " + leftValue + "\n");
+            case ADDED -> stringBuilder.append("  + " + key + ": " + rightValue + "\n");
+            case REMOVED -> stringBuilder.append("  - " + key + ": " + leftValue + "\n");
+            case EQUAL -> stringBuilder.append("    " + key + ": " + leftValue + "\n");
             case CHANGED -> {
-                stringBuilder.append("- " + key + ": " + leftValue + "\n");
-                stringBuilder.append("+ " + key + ": " + rightValue + "\n");
+                stringBuilder.append("  - " + key + ": " + leftValue + "\n");
+                stringBuilder.append("  + " + key + ": " + rightValue + "\n");
             }
             default -> throw new IllegalArgumentException("Unknown check result type: " + checkResult);
         }

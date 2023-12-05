@@ -33,7 +33,7 @@ public class Plain {
             }
         return stringBuilder.toString();
     }
-    private static String getStringValueForPlainFormat(Object o) {
+    public static String getStringValueForPlainFormat(Object o) {
         if (o instanceof Map) {
             return "[complex value]";
         } else if (o instanceof List) {

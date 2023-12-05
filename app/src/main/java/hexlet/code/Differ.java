@@ -24,12 +24,12 @@ public class Differ {
             final Object r = rightData.get(key);
 
             final Formatter.EqualityCheckResult checkResult;
-            if (l == null) {
+            if (l == null && !leftData.containsKey(key)) {
                 checkResult = Formatter.EqualityCheckResult.ADDED;
             } else {
-                if (r == null) {
+                if (r == null && !rightData.containsKey(key)) {
                     checkResult = Formatter.EqualityCheckResult.REMOVED;
-                } else if (l.equals(r)) {
+                } else if (Objects.equals(l, r)) {
                     checkResult = Formatter.EqualityCheckResult.EQUAL;
                 } else {
                     checkResult = Formatter.EqualityCheckResult.CHANGED;
@@ -52,7 +52,7 @@ public class Differ {
         private final Object rightValue;
         private final Formatter.EqualityCheckResult difference;
 
-        private KeyDifference(String key, Object leftValue, Object rightValue, Formatter.EqualityCheckResult difference) {
+        KeyDifference(String key, Object leftValue, Object rightValue, Formatter.EqualityCheckResult difference) {
             this.key = key;
             this.leftValue = leftValue;
             this.rightValue = rightValue;

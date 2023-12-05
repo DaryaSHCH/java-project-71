@@ -57,21 +57,28 @@ public class JsonFormatter {
         final Map<String, Object> differenceMap = new HashMap<>();
         Map<String, Object> diffInfoMap = new HashMap<>();
         final StringBuilder sb = new StringBuilder();
-        sb.append(getHeaderLine());
+        //sb.append(getHeaderLine());
 
         for (Differ.KeyDifference difference : differences) {
             if (difference.getDifference().equals(Formatter.EqualityCheckResult.EQUAL)) {
                 diffInfoMap = Map.of("type", "EQUALS");
+            } else if(difference.getDifference().equals(Formatter.EqualityCheckResult.ADDED)) {
+                diffInfoMap = Map.of("type", "ADDED");
+            } else if (difference.getDifference().equals(Formatter.EqualityCheckResult.REMOVED)) {
+                diffInfoMap = Map.of("type", "REMOVED");
+            } else if (difference.getDifference().equals(Formatter.EqualityCheckResult.CHANGED)) {
+                diffInfoMap = Map.of("type", "CHANGED");
             }
-
             differenceMap.put(difference.getKey(), diffInfoMap);
         }
         try {
-            sb.append(objectMapper.writeValueAsString(differenceMap));
+            sb.append(objectMapper
+                    .writerWithDefaultPrettyPrinter()
+                    .writeValueAsString(differenceMap));
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
-        sb.append(getTrailingLine());
+        //sb.append(getTrailingLine());
         return sb.toString();
     }
 }
