@@ -2,20 +2,13 @@ package hexlet.code;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static hexlet.code.TestUtils.getFile;
 import static org.junit.jupiter.api.Assertions.*;
-import hexlet.code.Differ;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Map;
 
 class DifferTest {
@@ -98,8 +91,8 @@ class DifferTest {
 
     @Test
     void testStylishDiffWithYMLInput() throws IOException {
-        final File file1 = getFile("NestedFirstFile.yml");
-        final File file2 = getFile("NestedSecondFile.yml");
+        final File file1 = getFile("NestedFirstFile.yaml");
+        final File file2 = getFile("NestedSecondFile.yaml");
         String expected = """
                 {
                     chars1: [a, b, c]
@@ -133,8 +126,8 @@ class DifferTest {
 
     @Test
     void testPlainDiffWithYMLInput() throws IOException {
-        final File file1 = getFile("NestedFirstFile.yml");
-        final File file2 = getFile("NestedSecondFile.yml");
+        final File file1 = getFile("NestedFirstFile.yaml");
+        final File file2 = getFile("NestedSecondFile.yaml");
         String expected = """
                 Property 'chars2' was updated. From [complex value] to false
                 Property 'checked' was updated. From false to true
@@ -157,8 +150,8 @@ class DifferTest {
 
     @Test
     void testJsonDiffWithYMLInput() throws IOException {
-        final File file1 = getFile("NestedFirstFile.yml");
-        final File file2 = getFile("NestedSecondFile.yml");
+        final File file1 = getFile("NestedFirstFile.yaml");
+        final File file2 = getFile("NestedSecondFile.yaml");
 
         final String actual = Differ.generate(file1, file2, OutputFormat.JSON);
         final ObjectMapper objectMapper = new ObjectMapper();
