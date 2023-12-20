@@ -2,7 +2,6 @@ package hexlet.code.formatters;
 
 import hexlet.code.Differ;
 import hexlet.code.Formatter;
-import hexlet.code.OutputFormat;
 
 import java.util.List;
 
@@ -23,7 +22,6 @@ public class Stylish {
                 stringBuilder.append("  - " + key + ": " + leftValue + "\n");
                 stringBuilder.append("  + " + key + ": " + rightValue + "\n");
             }
-            default -> throw new IllegalArgumentException("Unknown check result type: " + checkResult);
         }
     return stringBuilder.toString();
     }

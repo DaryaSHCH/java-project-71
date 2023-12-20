@@ -2,7 +2,6 @@ package hexlet.code.formatters;
 
 import hexlet.code.Differ;
 import hexlet.code.Formatter;
-import hexlet.code.OutputFormat;
 
 import java.util.List;
 import java.util.Map;
@@ -29,7 +28,6 @@ public class Plain {
                             + rightValuePrepared + "\n");
                     //Property 'chars2' was updated. From [complex value] to false
                 }
-                default -> throw new IllegalArgumentException("Unknown check result type: " + checkResult);
             }
         return stringBuilder.toString();
     }

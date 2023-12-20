@@ -9,7 +9,6 @@ public class TestUtils {
         final String testFilePath = ClassLoaderUtils.getDefaultClassLoader()
                 .getResource(name)
                 .getFile();
-
         return new File(testFilePath);
     }
 }

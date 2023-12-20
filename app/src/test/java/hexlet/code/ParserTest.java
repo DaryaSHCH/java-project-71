@@ -1,16 +1,14 @@
 package hexlet.code;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.function.Executable;
-import org.junit.platform.commons.util.ClassLoaderUtils;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 
 import static hexlet.code.TestUtils.getFile;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ParserTest {
 
