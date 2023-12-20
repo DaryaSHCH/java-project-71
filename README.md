@@ -23,6 +23,11 @@ Step 9
 
 asciinema https://asciinema.org/a/fc54U86977N1oE83iADGv7XKf
 
+###
+Step 10
+
+asciinema 10 https://asciinema.org/a/WWJgX2lpdI5SiQbpxqm6jr4zK
+
 ### 
 Maintainability:
 
