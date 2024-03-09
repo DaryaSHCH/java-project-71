@@ -1,6 +1,6 @@
 package hexlet.code;
 
-import hexlet.code.Differ.KeyDifference;
+import hexlet.code.model.KeyDifference;
 import hexlet.code.formatters.JsonFormatter;
 import hexlet.code.formatters.Plain;
 import hexlet.code.formatters.Stylish;

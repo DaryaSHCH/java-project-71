@@ -2,8 +2,8 @@ package hexlet.code.formatters;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import hexlet.code.Differ;
 import hexlet.code.Formatter;
+import hexlet.code.model.KeyDifference;
 
 import java.util.HashMap;
 import java.util.List;
@@ -13,12 +13,12 @@ public class JsonFormatter {
 
     private static final ObjectMapper objectMapper = new ObjectMapper();
 
-    public static String getFormatted(final List<Differ.KeyDifference> differences) {
+    public static String getFormatted(final List<KeyDifference> differences) {
         final Map<String, Object> differenceMap = new HashMap<>();
         Map<String, Object> diffInfoMap = new HashMap<>();
         final StringBuilder sb = new StringBuilder();
 
-        for (Differ.KeyDifference difference : differences) {
+        for (KeyDifference difference : differences) {
             if (difference.getDifference().equals(Formatter.EqualityCheckResult.EQUAL)) {
                 diffInfoMap = Map.of("type", "EQUALS");
             } else if(difference.getDifference().equals(Formatter.EqualityCheckResult.ADDED)) {

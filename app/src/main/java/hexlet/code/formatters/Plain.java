@@ -1,7 +1,7 @@
 package hexlet.code.formatters;
 
-import hexlet.code.Differ;
 import hexlet.code.Formatter;
+import hexlet.code.model.KeyDifference;
 
 import java.util.List;
 import java.util.Map;
@@ -44,12 +44,12 @@ public class Plain {
     }
 
     public static String getFormatted(
-            final List<Differ.KeyDifference> differences) {
+            final List<KeyDifference> differences) {
         final StringBuilder sb = new StringBuilder();
 
         sb.append(getHeaderLine());
 
-        for (final Differ.KeyDifference difference : differences) {
+        for (final KeyDifference difference : differences) {
             final String stylishString = formatPlain(
                     difference.getKey(),
                     difference.getLeftValue(),
