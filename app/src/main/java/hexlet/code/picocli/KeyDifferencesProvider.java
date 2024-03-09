@@ -23,14 +23,12 @@ public class KeyDifferencesProvider {
             final hexlet.code.Formatter.EqualityCheckResult checkResult;
             if (l == null && !leftData.containsKey(key)) {
                 checkResult = hexlet.code.Formatter.EqualityCheckResult.ADDED;
+            } else if (r == null && !rightData.containsKey(key)) {
+                checkResult = hexlet.code.Formatter.EqualityCheckResult.REMOVED;
+            } else if (Objects.equals(l, r)) {
+                checkResult = hexlet.code.Formatter.EqualityCheckResult.EQUAL;
             } else {
-                if (r == null && !rightData.containsKey(key)) {
-                    checkResult = hexlet.code.Formatter.EqualityCheckResult.REMOVED;
-                } else if (Objects.equals(l, r)) {
-                    checkResult = hexlet.code.Formatter.EqualityCheckResult.EQUAL;
-                } else {
-                    checkResult = Formatter.EqualityCheckResult.CHANGED;
-                }
+                checkResult = Formatter.EqualityCheckResult.CHANGED;
             }
 
             differences.add(new KeyDifference(
