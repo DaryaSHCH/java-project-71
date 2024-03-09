@@ -13,7 +13,9 @@ import static hexlet.code.Differ.generate;
         version = "gendiff 0.1",
         mixinStandardHelpOptions = true,
         description = "Compares two configuration files and shows a difference.")
-public class App implements Callable<String>{
+public class App implements Callable<Integer> {
+    private static final int SUCCESS_EXIT_CODE = 0;
+    private static final int ERROR_EXIT_CODE = 1;
 
     @CommandLine.Parameters(index = "0", paramLabel = "filepath1", description = "path to first file")
     private File left;
@@ -35,8 +37,15 @@ public class App implements Callable<String>{
     }
 
     @Override
-    public String call() throws Exception {
-        System.out.println(generate(left, right, outputFormat));
-        return null;
+    public Integer call() throws Exception {
+        try {
+            String formattedDiff = Differ.generate(left, right, outputFormat);
+            System.out.println(formattedDiff);
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+            return ERROR_EXIT_CODE;
+        }
+
+        return SUCCESS_EXIT_CODE;
     }
 }
