@@ -1,6 +1,6 @@
 package hexlet.code.formatters;
 
-import hexlet.code.Formatter;
+import hexlet.code.EqualityCheckResult;
 import hexlet.code.model.KeyDifference;
 
 import java.util.List;
@@ -11,22 +11,22 @@ public class Plain {
             final String key,
             final Object leftValue,
             final Object rightValue,
-            final Formatter.EqualityCheckResult checkResult) {
+            final EqualityCheckResult checkResult) {
 
             final Object leftValuePrepared = getStringValueForPlainFormat(leftValue);
             final Object rightValuePrepared = getStringValueForPlainFormat(rightValue);
             final StringBuilder stringBuilder = new StringBuilder();
 
             switch (checkResult) {
-                case ADDED -> stringBuilder.append("Property '" + key + "' was added with value: " + rightValuePrepared + "\n");
                 //Property 'obj1' was added with value: [complex value]
-                case REMOVED -> stringBuilder.append("Property '" + key + "' was removed\n");
+                case ADDED -> stringBuilder.append("Property '" + key + "' was added with value: " + rightValuePrepared + "\n");
                 //Property 'numbers3' was removed
+                case REMOVED -> stringBuilder.append("Property '" + key + "' was removed\n");
                 case EQUAL -> {}
+                //Property 'chars2' was updated. From [complex value] to false
                 case CHANGED -> {
                     stringBuilder.append("Property '" + key + "' was updated. From " + leftValuePrepared + " to "
                             + rightValuePrepared + "\n");
-                    //Property 'chars2' was updated. From [complex value] to false
                 }
             }
         return stringBuilder.toString();

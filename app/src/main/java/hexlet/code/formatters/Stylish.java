@@ -1,6 +1,6 @@
 package hexlet.code.formatters;
 
-import hexlet.code.Formatter;
+import hexlet.code.EqualityCheckResult;
 import hexlet.code.model.KeyDifference;
 
 import java.util.List;
@@ -10,7 +10,7 @@ public class Stylish {
             final String key,
             final Object leftValue,
             final Object rightValue,
-            final Formatter.EqualityCheckResult checkResult) {
+            final EqualityCheckResult checkResult) {
 
         final StringBuilder stringBuilder = new StringBuilder();
 

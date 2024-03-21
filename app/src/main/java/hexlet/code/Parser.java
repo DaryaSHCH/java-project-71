@@ -4,30 +4,28 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 
-import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Map;
 import java.util.TreeMap;
 
 public class Parser {
 
-    public static Map<String, Object> parse(File file) throws IOException {
-        if (file.getName().endsWith("json")) {
-            return parseJson(file);
+    public static Map<String, Object> parse(InputStream inputStream, String fileType) throws IOException {
+        if ("json".equals(fileType)) {
+            return parseJson(inputStream);
         } else {
-           return parseYml(file);
+            return parseYml(inputStream);
         }
     }
-    private static Map<String,Object> parseJson(File file) throws IOException {
+
+    private static Map<String, Object> parseJson(InputStream inputStream) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
-
-        return objectMapper.readValue(file, new TypeReference<Map<String,Object>>(){});
+        return objectMapper.readValue(inputStream, new TypeReference<Map<String, Object>>() {});
     }
-    private static Map<String, Object> parseYml(File file) throws IOException {
 
+    private static Map<String, Object> parseYml(InputStream inputStream) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper(new YAMLFactory());
-        return objectMapper.readValue(file, new TypeReference<TreeMap<String, Object>>() {
-        });
-
+        return objectMapper.readValue(inputStream, new TypeReference<Map<String, Object>>() {});
     }
 }

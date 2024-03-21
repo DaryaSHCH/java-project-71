@@ -1,6 +1,6 @@
 package hexlet.code.picocli;
 
-import hexlet.code.Formatter;
+import hexlet.code.EqualityCheckResult;
 import hexlet.code.model.KeyDifference;
 
 import java.util.*;
@@ -20,15 +20,15 @@ public class KeyDifferencesProvider {
             final Object l = leftData.get(key);
             final Object r = rightData.get(key);
 
-            final hexlet.code.Formatter.EqualityCheckResult checkResult;
+            final EqualityCheckResult checkResult;
             if (l == null && !leftData.containsKey(key)) {
-                checkResult = hexlet.code.Formatter.EqualityCheckResult.ADDED;
+                checkResult = EqualityCheckResult.ADDED;
             } else if (r == null && !rightData.containsKey(key)) {
-                checkResult = hexlet.code.Formatter.EqualityCheckResult.REMOVED;
+                checkResult = EqualityCheckResult.REMOVED;
             } else if (Objects.equals(l, r)) {
-                checkResult = hexlet.code.Formatter.EqualityCheckResult.EQUAL;
+                checkResult = EqualityCheckResult.EQUAL;
             } else {
-                checkResult = Formatter.EqualityCheckResult.CHANGED;
+                checkResult = EqualityCheckResult.CHANGED;
             }
 
             differences.add(new KeyDifference(

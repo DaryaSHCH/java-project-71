@@ -1,0 +1,6 @@
+{
+   "key_integer": {"type": "REMOVED"},
+   "key_string": {"type": "EQUALS"},
+   "key_double": {"type": "ADDED"},
+   "key_boolean": {"type": "CHANGED"}
+}

@@ -1,15 +1,15 @@
 package hexlet.code.model;
 
-import hexlet.code.Formatter;
+import hexlet.code.EqualityCheckResult;
 
 public class KeyDifference {
 
     private final String key;
     private final Object leftValue;
     private final Object rightValue;
-    private final Formatter.EqualityCheckResult difference;
+    private final EqualityCheckResult difference;
 
-    public KeyDifference(String key, Object leftValue, Object rightValue, Formatter.EqualityCheckResult difference) {
+    public KeyDifference(String key, Object leftValue, Object rightValue, EqualityCheckResult difference) {
         this.key = key;
         this.leftValue = leftValue;
         this.rightValue = rightValue;
@@ -28,7 +28,7 @@ public class KeyDifference {
         return rightValue;
     }
 
-    public Formatter.EqualityCheckResult getDifference() {
+    public EqualityCheckResult getDifference() {
         return difference;
     }
 }

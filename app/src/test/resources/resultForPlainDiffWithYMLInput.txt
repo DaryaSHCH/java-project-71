@@ -1,0 +1,9 @@
+Property 'chars2' was updated. From [complex value] to false
+Property 'key1' was removed
+Property 'key2' was added with value: 'value2'
+Property 'numbers2' was updated. From [complex value] to [complex value]
+Property 'numbers3' was removed
+Property 'numbers4' was added with value: [complex value]
+Property 'obj1' was added with value: [complex value]
+Property 'obj3' was updated. From [complex value] to [complex value]
+Property 'setting1' was updated. From 'Some value' to 'Another value'

@@ -4,35 +4,35 @@ import hexlet.code.model.KeyDifference;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.*;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.util.List;
+import java.util.Map;
 
 import static hexlet.code.picocli.KeyDifferencesProvider.getKeyDifferences;
 
 
 public class Differ {
 
-    public static String generate(String file1Path, String file2Path) throws IOException {
-        return generate(new File(file1Path), new File(file2Path), null);
-    }
-
-    public static String generate(String file1Path, String file2Path, String outputFormat) throws IOException {
-        OutputFormat outputFormatEnum;
-        if (outputFormat == null) {
-            outputFormatEnum = OutputFormat.STYLISH;
-        } else {
-            outputFormatEnum = OutputFormat.valueOf(outputFormat);
-        }
-
-        return generate(new File(file1Path), new File(file2Path), outputFormatEnum);
-    }
-
     public static String generate(File file1, File file2, OutputFormat outputFormat) throws IOException {
-        Map<String, Object> leftData = Parser.parse(file1);
-        Map<String, Object> rightData = Parser.parse(file2);
+        try (InputStream file1Stream = Files.newInputStream(file1.toPath());
+             InputStream file2Stream = Files.newInputStream(file2.toPath())) {
+            Map<String, Object> leftData = Parser.parse(file1Stream, getFileExtension(file1));
+            Map<String, Object> rightData = Parser.parse(file2Stream, getFileExtension(file2));
 
-        final List<KeyDifference> differences = getKeyDifferences(leftData, rightData);
+            final List<KeyDifference> differences = getKeyDifferences(leftData, rightData);
 
-        return Formatter.getFormatted(differences, outputFormat);
+            return Formatter.getFormatted(differences, outputFormat);
+        }
     }
 
+    private static String getFileExtension(File file) {
+        if (file.getName().endsWith("json")) {
+            return "json";
+        } else if (file.getName().endsWith("yaml")) {
+            return "yaml";
+        } else {
+            return "yml";
+        }
+    }
 }

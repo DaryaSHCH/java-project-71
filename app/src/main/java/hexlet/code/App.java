@@ -1,12 +1,11 @@
 package hexlet.code;
+
 import hexlet.code.picocli.OutputFormatConverter;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 
 import java.io.File;
 import java.util.concurrent.Callable;
-
-import static hexlet.code.Differ.generate;
 
 @Command(
         name = "gendiff",

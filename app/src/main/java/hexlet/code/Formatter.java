@@ -1,9 +1,9 @@
 package hexlet.code;
 
-import hexlet.code.model.KeyDifference;
 import hexlet.code.formatters.JsonFormatter;
 import hexlet.code.formatters.Plain;
 import hexlet.code.formatters.Stylish;
+import hexlet.code.model.KeyDifference;
 
 import java.io.IOException;
 import java.util.List;
@@ -16,14 +16,6 @@ public class Formatter {
             case PLAIN -> Plain.getFormatted(differences);
             case JSON -> JsonFormatter.getFormatted(differences);
         };
-    }
-
-    public enum EqualityCheckResult {
-
-        EQUAL,
-        REMOVED,
-        ADDED,
-        CHANGED
     }
 }
 

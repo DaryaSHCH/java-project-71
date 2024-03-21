@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Map;
 
 import static hexlet.code.TestUtils.getFile;
@@ -15,8 +16,8 @@ class ParserTest {
     @Test
     void shouldReturnExpectedData() throws IOException {
         final File file = getFile("parser_input.json");
-
-        final Map<String, Object> actual = Parser.parse(file);
+        InputStream fileStream = java.nio.file.Files.newInputStream(file.toPath());
+        final Map<String, Object> actual = Parser.parse(fileStream, "json");
         final Map<String, Object> expected = Map.of(
                 "key_string", "value",
                 "key_boolean", true,
@@ -30,19 +31,20 @@ class ParserTest {
     @Test
     void shouldReturnEmptyMap() throws IOException {
         final File file = getFile("parser_input_empty.json");
-        final Map<String, Object> actual = Parser.parse(file);
+        InputStream emptyFileStream = java.nio.file.Files.newInputStream(file.toPath());
+        final Map<String, Object> actual = Parser.parse(emptyFileStream, "json");
         final Map<String, Object> expected = Map.of();
 
         assertEquals(expected, actual);
     }
 
     @Test
-    void shouldThrowExceptionOnCorruptedJson() {
+    void shouldThrowExceptionOnCorruptedJson() throws IOException {
         final File file = getFile("parser_input_corrupted.json");
-
+        InputStream fileStream = java.nio.file.Files.newInputStream(file.toPath());
         assertThrows(
                 IOException.class,
-                () -> Parser.parse(file));
+                () -> Parser.parse(fileStream, "json"));
     }
 
 }
