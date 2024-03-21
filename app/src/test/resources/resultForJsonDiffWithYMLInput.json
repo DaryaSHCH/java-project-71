@@ -1,29 +1,35 @@
 {
-  "setting1": {
-    "type": "CHANGED"
-  },
   "key1": {
     "type": "REMOVED"
   },
   "key2": {
     "type": "ADDED"
   },
-  "numbers2": {
+  "chars2": {
     "type": "CHANGED"
   },
-  "numbers3": {
-    "type": "REMOVED"
+  "setting1": {
+    "type": "CHANGED"
   },
   "numbers4": {
     "type": "ADDED"
   },
-  "chars2": {
+  "numbers3": {
+    "type": "REMOVED"
+  },
+  "numbers2": {
+    "type": "CHANGED"
+  },
+  "numbers1": {
+    "type": "EQUALS"
+  },
+  "obj2": {
+    "type": "EQUALS"
+  },
+  "obj3": {
     "type": "CHANGED"
   },
   "obj1": {
     "type": "ADDED"
-  },
-  "obj3": {
-    "type": "CHANGED"
   }
 }
