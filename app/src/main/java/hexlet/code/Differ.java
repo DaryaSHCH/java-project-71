@@ -14,6 +14,20 @@ import static hexlet.code.picocli.KeyDifferencesProvider.getKeyDifferences;
 
 public class Differ {
 
+    public static String generate(String firstFilePath, String secondFilePath) throws IOException {
+        File file1 = new File(firstFilePath);
+        File file2 = new File(secondFilePath);
+
+        return generate(file1, file2, OutputFormat.STYLISH);
+    }
+
+    public static String generate(String firstFilePath, String secondFilePath, String format) throws IOException {
+        File file1 = new File(firstFilePath);
+        File file2 = new File(secondFilePath);
+
+        return generate(file1, file2, OutputFormat.valueOf(format.toUpperCase()));
+    }
+
     public static String generate(File file1, File file2, OutputFormat outputFormat) throws IOException {
         try (InputStream file1Stream = Files.newInputStream(file1.toPath());
              InputStream file2Stream = Files.newInputStream(file2.toPath())) {
