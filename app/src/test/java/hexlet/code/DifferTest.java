@@ -42,8 +42,8 @@ class DifferTest {
         final String actual = Differ.generate(file1, file2, OutputFormat.JSON);
         final ObjectMapper objectMapper = new ObjectMapper();
         final Map<String, Object> actualData = objectMapper
-                .readValue(actual, new TypeReference<Map<String, Object>>() {});
-        Map<String, Object> expectedMap = objectMapper.readValue(file3, new TypeReference<Map<String, Object>>() {});
+                .readValue(actual, new TypeReference<Map<String, Object>>(){});
+        Map<String, Object> expectedMap = objectMapper.readValue(file3, new TypeReference<Map<String, Object>>(){});
         assertEquals(actualData, expectedMap);
     }
 
@@ -71,14 +71,14 @@ class DifferTest {
     void testJsonDiffWithYMLInput() throws IOException {
         final File file1 = getFile("NestedFirstFile.yaml");
         final File file2 = getFile("NestedSecondFile.yaml");
-        final File file3 = getFile ("resultForJsonDiffWithYMLInput.json");
+        final File file3 = getFile("resultForJsonDiffWithYMLInput.json");
 
         final String actual = Differ.generate(file1, file2, OutputFormat.JSON);
 
         final ObjectMapper objectMapper = new ObjectMapper();
         final Map<String, Object> actualData = objectMapper
-                .readValue(actual, new TypeReference<Map<String, Object>>() {});
-        Map<String, Object> expectedMap = objectMapper.readValue(file3, new TypeReference<Map<String, Object>>() {});
+                .readValue(actual, new TypeReference<Map<String, Object>>(){});
+        Map<String, Object> expectedMap = objectMapper.readValue(file3, new TypeReference<Map<String, Object>>(){});
         assertEquals(actualData, expectedMap);
     }
 }
