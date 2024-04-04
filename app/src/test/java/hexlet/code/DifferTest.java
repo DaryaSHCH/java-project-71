@@ -42,8 +42,8 @@ class DifferTest {
         final String actual = Differ.generate(file1, file2, OutputFormat.JSON);
         final ObjectMapper objectMapper = new ObjectMapper();
         final Map<String, Object> actualData = objectMapper
-                .readValue(actual, new TypeReference<Map<String, Object>>(){});
-        Map<String, Object> expectedMap = objectMapper.readValue(file3, new TypeReference<Map<String, Object>>(){});
+                .readValue(actual, new TypeReference<Map<String, Object>>() {} );
+        Map<String, Object> expectedMap = objectMapper.readValue(file3, new TypeReference<Map<String, Object>>() {} );
         assertEquals(actualData, expectedMap);
     }
 
@@ -77,8 +77,8 @@ class DifferTest {
 
         final ObjectMapper objectMapper = new ObjectMapper();
         final Map<String, Object> actualData = objectMapper
-                .readValue(actual, new TypeReference<Map<String, Object>>(){});
-        Map<String, Object> expectedMap = objectMapper.readValue(file3, new TypeReference<Map<String, Object>>(){});
+                .readValue(actual, new TypeReference<Map<String, Object>>() {} );
+        Map<String, Object> expectedMap = objectMapper.readValue(file3, new TypeReference<Map<String, Object>>() {} );
         assertEquals(actualData, expectedMap);
     }
 }
