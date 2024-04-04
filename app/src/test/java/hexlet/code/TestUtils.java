@@ -17,7 +17,11 @@ public class TestUtils {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file)))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                content.append(line).append("\n");
+                if (!content.isEmpty()) {
+                    content.append("\n");
+                }
+
+                content.append(line);
             }
         }
         return content.toString();
