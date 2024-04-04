@@ -2,14 +2,9 @@ package hexlet.code;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import org.junit.jupiter.api.Test;
-import org.junit.platform.commons.util.ClassLoaderUtils;
-
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.util.HashMap;
 import java.util.Map;
 
 import static hexlet.code.TestUtils.getFile;
@@ -42,7 +37,7 @@ class DifferTest {
     void testJsonDiffWithJsonInput() throws IOException {
         final File file1 = getFile("DifferTestLeft.json");
         final File file2 = getFile("DifferTestRight.json");
-        final File file3 = getFile ("resultForJsonDiffWithJsonInput.json");
+        final File file3 = getFile("resultForJsonDiffWithJsonInput.json");
 
         final String actual = Differ.generate(file1, file2, OutputFormat.JSON);
         final ObjectMapper objectMapper = new ObjectMapper();
