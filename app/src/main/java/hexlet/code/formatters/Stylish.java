@@ -22,6 +22,8 @@ public class Stylish {
                 stringBuilder.append("  - " + key + ": " + leftValue + "\n");
                 stringBuilder.append("  + " + key + ": " + rightValue + "\n");
             }
+            default ->  {
+            }
         }
         return stringBuilder.toString();
     }

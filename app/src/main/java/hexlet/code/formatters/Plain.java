@@ -14,19 +14,19 @@ public class Plain {
             final Object rightValue,
             final EqualityCheckResult checkResult) {
 
-            final Object leftValuePrepared = getStringValueForPlainFormat(leftValue);
-            final Object rightValuePrepared = getStringValueForPlainFormat(rightValue);
+        final Object leftValuePrepared = getStringValueForPlainFormat(leftValue);
+        final Object rightValuePrepared = getStringValueForPlainFormat(rightValue);
 
-            return switch (checkResult) {
-                //Property 'obj1' was added with value: [complex value]
-                case ADDED -> "Property '" + key + "' was added with value: " + rightValuePrepared;
-                //Property 'numbers3' was removed
-                case REMOVED -> "Property '" + key + "' was removed";
-                case EQUAL -> "";
-                //Property 'chars2' was updated. From [complex value] to false
-                case CHANGED -> "Property '" + key + "' was updated. From " + leftValuePrepared + " to "
-                        + rightValuePrepared;
-            };
+        return switch (checkResult) {
+            //Property 'obj1' was added with value: [complex value]
+            case ADDED -> "Property '" + key + "' was added with value: " + rightValuePrepared;
+            //Property 'numbers3' was removed
+            case REMOVED -> "Property '" + key + "' was removed";
+            case EQUAL -> "";
+            //Property 'chars2' was updated. From [complex value] to false
+            case CHANGED -> "Property '" + key + "' was updated. From " + leftValuePrepared + " to "
+                    + rightValuePrepared;
+        };
     }
 
     public static String getStringValueForPlainFormat(Object o) {
