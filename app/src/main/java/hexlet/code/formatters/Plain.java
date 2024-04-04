@@ -45,7 +45,7 @@ public class Plain {
             final List<KeyDifference> differences) {
         final StringBuilder sb = new StringBuilder();
 
-        for (final Iterator<KeyDifference> iterator = differences.iterator(); iterator.hasNext(); ) {
+        for (final Iterator<KeyDifference> iterator = differences.iterator(); iterator.hasNext();) {
             KeyDifference difference = iterator.next();
 
             final String stylishString = formatPlain(

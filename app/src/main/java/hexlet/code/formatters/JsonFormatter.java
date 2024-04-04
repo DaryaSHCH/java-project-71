@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class JsonFormatter {
 
-    private static final ObjectMapper objectMapper = new ObjectMapper();
+    private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
     public static String getFormatted(final List<KeyDifference> differences) {
 
@@ -20,7 +20,7 @@ public class JsonFormatter {
         for (KeyDifference difference : differences) {
             if (difference.getDifference().equals(EqualityCheckResult.EQUAL)) {
                 differenceMap.put(difference.getKey(), Map.of("type", "EQUALS"));
-            } else if(difference.getDifference().equals(EqualityCheckResult.ADDED)) {
+            } else if (difference.getDifference().equals(EqualityCheckResult.ADDED)) {
                 differenceMap.put(difference.getKey(), Map.of("type", "ADDED"));
             } else if (difference.getDifference().equals(EqualityCheckResult.REMOVED)) {
                 differenceMap.put(difference.getKey(), Map.of("type", "REMOVED"));
@@ -29,7 +29,7 @@ public class JsonFormatter {
             }
         }
         try {
-            return objectMapper.writeValueAsString(differenceMap);
+            return OBJECT_MAPPER.writeValueAsString(differenceMap);
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
