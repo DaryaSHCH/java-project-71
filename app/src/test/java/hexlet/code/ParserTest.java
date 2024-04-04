@@ -46,5 +46,4 @@ class ParserTest {
                 IOException.class,
                 () -> Parser.parse(fileStream, "json"));
     }
-
 }

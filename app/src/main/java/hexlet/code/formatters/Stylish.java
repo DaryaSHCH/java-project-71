@@ -23,7 +23,7 @@ public class Stylish {
                 stringBuilder.append("  + " + key + ": " + rightValue + "\n");
             }
         }
-    return stringBuilder.toString();
+        return stringBuilder.toString();
     }
 
     private static String getHeaderLine() {

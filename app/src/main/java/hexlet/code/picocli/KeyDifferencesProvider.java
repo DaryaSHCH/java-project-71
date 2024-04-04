@@ -3,7 +3,14 @@ package hexlet.code.picocli;
 import hexlet.code.EqualityCheckResult;
 import hexlet.code.model.KeyDifference;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
 
 public class KeyDifferencesProvider {
     public static List<KeyDifference> getKeyDifferences(Map<String, Object> leftData, Map<String, Object> rightData) {

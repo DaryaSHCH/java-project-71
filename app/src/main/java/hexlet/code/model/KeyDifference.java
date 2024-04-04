@@ -2,7 +2,7 @@ package hexlet.code.model;
 
 import hexlet.code.EqualityCheckResult;
 
-public class KeyDifference {
+public final class KeyDifference {
 
     private final String key;
     private final Object leftValue;
