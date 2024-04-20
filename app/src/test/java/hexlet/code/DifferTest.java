@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class DifferTest {
 
     @Test
-    void TestGenerateDefaultFormatWithJsonInput() throws IOException {
+    void testGenerateDefaultFormatWithJsonInput() throws IOException {
         final File file1 = getFile("NestedFirstFile.json");
         final File file2 = getFile("NestedSecondFile.json");
         final String filePath1 = file1.getPath();
@@ -26,7 +26,7 @@ class DifferTest {
     }
 
     @Test
-    void TestGenerateDefaultFormatWithYAMLInput() throws IOException {
+    void testGenerateDefaultFormatWithYAMLInput() throws IOException {
         final File file1 = getFile("NestedFirstFile.yaml");
         final File file2 = getFile("NestedSecondFile.yaml");
         final String filePath1 = file1.getPath();
