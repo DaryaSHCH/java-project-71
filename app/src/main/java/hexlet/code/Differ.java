@@ -29,24 +29,43 @@ public class Differ {
     }
 
     public static String generate(File file1, File file2, OutputFormat outputFormat) throws IOException {
-        try (InputStream file1Stream = Files.newInputStream(file1.toPath());
-             InputStream file2Stream = Files.newInputStream(file2.toPath())) {
-            Map<String, Object> leftData = Parser.parse(file1Stream, getFileExtension(file1));
-            Map<String, Object> rightData = Parser.parse(file2Stream, getFileExtension(file2));
 
-            final List<KeyDifference> differences = getKeyDifferences(leftData, rightData);
+        Map<String, Object> leftData = parse(file1);
+        Map<String, Object> rightData = parse(file2);
 
-            return Formatter.getFormatted(differences, outputFormat);
+        final List<KeyDifference> differences = getKeyDifferences(leftData, rightData);
+
+        return Formatter.getFormatted(differences, outputFormat);
+    }
+
+    private static Map<String, Object> parse(File file) throws IOException {
+        FileType type = getFileExtension(file);
+
+        try (InputStream fileStream = Files.newInputStream(file.toPath())) {
+            return switch (type) {
+                case JSON -> Parser.parseJson(fileStream);
+                case YAML -> Parser.parseYml(fileStream);
+                default -> throw new IllegalArgumentException("Unsupported format");
+            };
         }
     }
 
-    private static String getFileExtension(File file) {
-        if (file.getName().endsWith("json")) {
-            return "json";
-        } else if (file.getName().endsWith("yaml")) {
-            return "yaml";
-        } else {
-            return "yml";
+    private static FileType getFileExtension(File file) {
+        int index = file.getName().lastIndexOf('.');
+        if (index < 0) {
+            return FileType.UNKNOWN;
         }
+        String type = file.getName().substring(index + 1);
+        return switch (type.toLowerCase()) {
+            case "json" -> FileType.JSON;
+            case "yaml", "yml" -> FileType.YAML;
+            default -> FileType.UNKNOWN;
+        };
+    }
+
+    private enum FileType {
+        JSON,
+        YAML,
+        UNKNOWN
     }
 }
