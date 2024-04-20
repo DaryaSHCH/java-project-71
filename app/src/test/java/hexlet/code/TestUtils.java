@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.file.Files;
 
 public class TestUtils {
     public static File getFile(String name) {
@@ -16,18 +17,6 @@ public class TestUtils {
         return new File(testFilePath);
     }
     public static String getFileContent(String name) throws IOException {
-        File file = getFile(name);
-        StringBuilder content = new StringBuilder();
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file)))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                if (!content.isEmpty()) {
-                    content.append("\n");
-                }
-
-                content.append(line);
-            }
-        }
-        return content.toString();
+        return Files.readString(getFile(name).toPath());
     }
 }
