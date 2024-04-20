@@ -11,19 +11,17 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.TreeSet;
 
 public class KeyDifferencesProvider {
     public static List<KeyDifference> getKeyDifferences(Map<String, Object> leftData, Map<String, Object> rightData) {
-        Set<String> allKeys = new HashSet<>();
+        Set<String> allKeys = new TreeSet<>();
         allKeys.addAll(leftData.keySet());
         allKeys.addAll(rightData.keySet());
 
-        List<String> sortedKeys = new ArrayList<>(allKeys);
-        Collections.sort(sortedKeys);
-
         final List<KeyDifference> differences = new LinkedList<>();
 
-        for (String key : sortedKeys) {
+        for (String key : allKeys) {
             final Object l = leftData.get(key);
             final Object r = rightData.get(key);
 
