@@ -36,7 +36,7 @@ public final class App implements Callable<Integer> {
     }
 
     @Override
-    public Integer call() throws Exception {
+    public Integer call() {
         try {
             String formattedDiff = Differ.generate(left, right, outputFormat);
             System.out.println(formattedDiff);
